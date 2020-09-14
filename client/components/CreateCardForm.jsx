@@ -12,6 +12,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
+import MultipleSelect from './DropdownMenu.jsx';
 
 
 //----------- styling for form ---------------//
@@ -56,31 +57,6 @@ const MenuProps = {
   },
 };
 
-
-//----------------- Form data -----------------------//
-
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
-
-
-function getStyles(name, personName, theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
 //--------------- Grabbing data from technologies state ------------//
 
 const mapStateToProps = (state) => ({
@@ -136,64 +112,17 @@ function CreateCardForm() {
           // helperText="Some important text"
           variant="outlined"
         />
+        <MultipleSelect />
         <Button color="inherit">Submit</Button>
       </div>
     </div>
   );
 }
 
-//---------------Drop down menu on form-------------------------//
-
-function MultipleSelect(props) {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
-  console.log("PROPS.TECHNOLOGIES", props)
-
-  const handleChange = (event) => {
-    setPersonName(event.target.value);
-  };
-
-  const handleChangeMultiple = (event) => {
-    const { options } = event.target;
-    const value = [];
-    for (let i = 0, l = options.length; i < l; i += 1) {
-      if (options[i].selected) {
-        value.push(options[i].value);
-      }
-    }
-    setPersonName(value);
-  };
-
-  return (
-    <div>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-checkbox-label">Technologies</InputLabel>
-        <Select
-          labelId="demo-mutiple-checkbox-label"
-          id="demo-mutiple-checkbox"
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<Input />}
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
-        >
-          {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
-  );
-}
 
 export {
   CreateCardForm,
-  MultipleSelect,
+  // MultipleSelect,
 }
 
-export default connect(mapStateToProps)(MultipleSelect);
+export default connect(mapStateToProps)(CreateCardForm);

@@ -10,9 +10,7 @@ import SignUp from './components/SignUp.jsx'
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import {CreateCardForm, MultipleSelect} from './components/CreateCardForm.jsx';
-
-// import HomePage from './components/Homepage.jsx';
+import {CreateCardForm} from './components/CreateCardForm.jsx';
 
 const mapStateToProps = (state) => ({
   cardList: state.cardList,
@@ -45,11 +43,6 @@ const classes = {
    },
 }
 
-// const useStyles = makeStyles((theme) => ({
-//   button: {
-//     margin: theme.spacing(1),
-//   },
-// }));
 
 //-------------------Main Component-----------------------------//
 
@@ -105,7 +98,6 @@ class App extends Component {
               New
             </Button>
             <Route exact path='/new' component={CreateCardForm} />
-            <Route exact path='/new' component={MultipleSelect} />
           </Link>
           
           </Switch>
