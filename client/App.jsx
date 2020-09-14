@@ -7,6 +7,10 @@ import { setAllCards } from './actions/action.js';
 import * as actions from './actions/action.js';
 import { connect } from 'react-redux';
 import SignUp from './components/SignUp.jsx'
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import CreateCardForm from './components/CreateCardForm.jsx';
 
 // import HomePage from './components/Homepage.jsx';
 
@@ -41,6 +45,12 @@ const classes = {
    },
 }
 
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
+
 //------------------------------------------------//
 
 class App extends Component {
@@ -51,7 +61,8 @@ class App extends Component {
     this.props.fetchAllCards();
   }
 
- 
+  // classes = useStyles();
+
 
   render() {
    // Window.pageYOffsetY > 200px
@@ -65,7 +76,7 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-            <Route
+            {/* <Route
               exact
               path='/'
               render={(props) => (
@@ -74,7 +85,7 @@ class App extends Component {
                   <h1> Please Log In</h1>
                 </Fragment>
               )}
-            />
+            /> */}
             <Route exact path='/signin' component={SignIn} />
           </Switch>
           <br/>
@@ -82,6 +93,23 @@ class App extends Component {
           <br />
           <br />
           <br />
+
+          <Switch>
+          <Link to='/new'>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              startIcon={<AddIcon></AddIcon>}
+            >
+            
+              New
+            </Button>
+            <Route exact path='/new' component={CreateCardForm} />
+          </Link>
+          
+          </Switch>
+
           <form 
         style={classes.form}
         // onSubmit={handleSubmit}
