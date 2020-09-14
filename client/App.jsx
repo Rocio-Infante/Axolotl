@@ -10,7 +10,7 @@ import SignUp from './components/SignUp.jsx'
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import CreateCardForm from './components/CreateCardForm.jsx';
+import {CreateCardForm, MultipleSelect} from './components/CreateCardForm.jsx';
 
 // import HomePage from './components/Homepage.jsx';
 
@@ -45,13 +45,13 @@ const classes = {
    },
 }
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   button: {
+//     margin: theme.spacing(1),
+//   },
+// }));
 
-//------------------------------------------------//
+//-------------------Main Component-----------------------------//
 
 class App extends Component {
   constructor(props) {
@@ -102,10 +102,10 @@ class App extends Component {
               className={classes.button}
               startIcon={<AddIcon></AddIcon>}
             >
-            
               New
             </Button>
             <Route exact path='/new' component={CreateCardForm} />
+            <Route exact path='/new' component={MultipleSelect} />
           </Link>
           
           </Switch>

@@ -2,13 +2,19 @@ import * as types from '../constants/actionTypes';
 
 const initialState = {
     loggedIn: false,
-    cardList: ['hello Im in the reducers'],
+    cardList: [],
     currentUser: '',
     newSearch: '',
     newProblem: '',
-    newTechnology: '',
     newSolution: '',
     newDocLink: '',
+    technologies: [
+        { name: "React", id: "1"},
+        { name: "Redux", id: "2"},
+        { name: "Express", id: "3"},
+        { name: "Javascript", id: "4"},
+        { name: "MongoDB", id: "5"},
+    ],
 }
 
 const reducer = (state = initialState, action) => {

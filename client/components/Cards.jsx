@@ -50,10 +50,8 @@ export default function OutlinedCard(props) {
         <Typography variant="body2" component="p" color="textSecondary">
         {props.cardList.created_at}
         </Typography>
-        {/* {console.log(props.cardList.tech_stack[1])} */}
       </CardContent>
       <CardActions>
-        {/* <Button size="small" color="primary">Read More</Button> */}
         <Button size="small" color="primary" href={props.cardList.documentation} target="_blank">Docs</Button>
       </CardActions>
     </Card>
