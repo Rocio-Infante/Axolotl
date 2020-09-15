@@ -61,7 +61,7 @@ function getStyles(name, personName, theme) {
         : theme.typography.fontWeightMedium,
   };
 }
-//---------------Drop down menu on form-------------------------//
+//---------------Drop down menu on form--------------------------//
 function MultipleSelect(props) {
   const classes = useStyles();
   const theme = useTheme();
